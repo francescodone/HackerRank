@@ -31,7 +31,7 @@ function readLine() {
  *  2. INTEGER d
  */
 
-function getMedianx2(countArr, days) {
+function getMedianx2 (countArr, days) {
   let sum = 0
   for (let i = 0; i < countArr.length; i++) {
     sum += countArr[i]
@@ -39,7 +39,8 @@ function getMedianx2(countArr, days) {
     if (sum * 2 > days) return (i * 2)
   }
 }
-function activityNotifications(debits, days) {
+
+function activityNotifications (debits, days) {
   const countArr = new Array(201).fill(0)
   let notices = 0
   for (let i = 0; i < days; i++) {
@@ -53,7 +54,9 @@ function activityNotifications(debits, days) {
     countArr[debits[i]]++
   }
   return notices
-}function getMedianx2(countArr, days) {
+}
+
+function getMedianx2 (countArr, days) {
   let sum = 0
   for (let i = 0; i < countArr.length; i++) {
     sum += countArr[i]
@@ -61,7 +64,8 @@ function activityNotifications(debits, days) {
     if (sum * 2 > days) return (i * 2)
   }
 }
-function activityNotifications(debits, days) {
+
+function activityNotifications (debits, days) {
   const countArr = new Array(201).fill(0)
   let notices = 0
   for (let i = 0; i < days; i++) {
