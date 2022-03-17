@@ -27,16 +27,24 @@ function readLine() {
 // Complete the triplets function below.
 function triplets(a, b, c) {
     let counter = 0
-    
-    a = [...new Set(a)].sort((a, b) => a - b)
-    b = [...new Set(b)].filter(el => el >= Math.min(...a)).sort((a, b) => a - b)
-    c = [...new Set(c)].filter(el => el <= Math.max(...b)).sort((a, b) => a - b)
-    
-    a.forEach(feasibleA => {
-        b.filter(el => feasibleA <= el).forEach(feasibleB => {
-            counter += c.filter(el => el <= feasibleB).length
-        })
-    })
+    a = [...new Set(a)]
+    b = [...new Set(b)].filter(el => el >= Math.min(...a))
+    c = [...new Set(c)].filter(el => el <= Math.max(...b))
+
+    const memoize = {}
+    for (let p = 0; p < a.length; p++) {
+        for (let q = 0; q < b.length; q++) {
+            if (a[p] > b[q]) continue
+            else if (!memoize[q]) {
+                memoize[q] = 0
+                for (let r = 0; r < c.length; r++) {
+                    if (b[q] < c[r]) continue
+                    memoize[q]++
+                }
+            }
+            counter += memoize[q]    
+        }
+    }
     
     return counter
 }
