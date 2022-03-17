@@ -33,17 +33,12 @@ function readLine() {
 
 function maxMin(k, arr) {
     let min = Infinity
-    arr = arr.sort((a,b) => a-b)
-    let unfairness
-    for(let i=0; i<arr.length-k; i++) {
-        unfairness = getUnfairness(arr.slice(i, i+k))
-        if(min > unfairness) min = unfairness
+    arr = arr.sort((a, b) => a - b)
+    for (let i = 0; i < arr.length - k + 1; i++) {
+        const unfairness = arr[i + k - 1] - arr[i]
+        if (min > unfairness) min = unfairness
     }
     return min
-}
-
-function getUnfairness(arr) {
-    return Math.max(...arr) - Math.min(...arr)
 }
 
 function main() {
