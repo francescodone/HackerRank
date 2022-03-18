@@ -34,12 +34,12 @@ function whatFlavors(cost, money) {
     const costMin = cost.filter(flavour => (flavour + min) <= money)
     
     let found = false
-    for (let i = 0; i < costMin.length-1 && !found; i++) {
+    for (let i = 0; i < costMin.length - 1 && !found; i++) {
         for (let j = i + 1; j < costMin.length && !found; j++) {
             if (costMin[i] + costMin[j] === money) {
-                indexes.push(cost.indexOf(costMin[i])+1)
-                cost[indexes[0]-1] = -1
-                indexes.push(cost.indexOf(costMin[j])+1)
+                indexes.push(cost.indexOf(costMin[i]) + 1)
+                cost[indexes[0] - 1] = -1
+                indexes.push(cost.indexOf(costMin[j]) + 1)
                 found = true
             }
         }
