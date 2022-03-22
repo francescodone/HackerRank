@@ -47,6 +47,19 @@ function whatFlavors(cost, money) {
     console.log(indexes.join(' '))
 }
 
+function whatFlavorsOpt(cost, money) {
+    const comp = []
+    let found = false
+    for (let i = 0; i < cost.length - 1 && !found; i++) {
+        if (comp[cost[i]]) {
+            found = true
+            console.log(`${cost.indexOf(money - cost[i]) + 1} ${i + 1}`)
+        }
+        comp[money - cost[i]] = true
+    }
+}
+
+
 function main() {
     const t = parseInt(readLine().trim(), 10);
 
@@ -57,6 +70,6 @@ function main() {
 
         const cost = readLine().replace(/\s+$/g, '').split(' ').map(costTemp => parseInt(costTemp, 10));
 
-        whatFlavors(cost, money);
+        whatFlavorsOpt(cost, money);
     }
 }
