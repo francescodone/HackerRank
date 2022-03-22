@@ -49,6 +49,23 @@ function triplets(a, b, c) {
     return counter
 }
 
+function tripletsOpt(a, b, c) {
+    let counter = 0
+    let i = 0
+    let j = 0
+    let k = 0
+    a = [...new Set(a)].sort((a, b) => a - b)
+    b = [...new Set(b)].sort((a, b) => a - b)
+    c = [...new Set(c)].sort((a, b) => a - b)
+    while (j < b.length) {
+        while (a[i] <= b[j]) i++
+        while (c[k] <= b[j]) k++
+        counter += i * k
+        j++
+    }
+    return counter
+}
+
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
@@ -66,7 +83,7 @@ function main() {
 
     const arrc = readLine().split(' ').map(arrcTemp => parseInt(arrcTemp, 10));
 
-    const ans = triplets(arra, arrb, arrc);
+    const ans = tripletsOpt(arra, arrb, arrc);
 
     ws.write(ans + '\n');
 
